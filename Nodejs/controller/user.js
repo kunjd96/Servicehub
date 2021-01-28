@@ -141,7 +141,7 @@ exports.login = asyncHandler(async(req, res, next) => {
 
     //Create token 
     const token = user.getSignedJwtToken();
-    res.status(200).json({ success: true, data: "Your account is active.. please login to your app now" });
+    res.status(200).json({ success: true, token });
 
 });
 
@@ -249,7 +249,7 @@ exports.validateUser = asyncHandler(async(req, res, next) => {
 
 
     const token = user.getSignedJwtToken();
-    res.status(200).json({ success: true, token });
+    res.status(200).json({ success: true, data: "Acctount is active ...Please Login.." });
 });
 
 
