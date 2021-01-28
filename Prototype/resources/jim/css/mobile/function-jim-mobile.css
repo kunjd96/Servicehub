@@ -35,10 +35,14 @@ body.devMobile { display:none; overflow: hidden; }
 
 /* cursors */
 
-body.devMobile #jim-container.touch { cursor: url('./resources/_jim/css/images/touch.cur'), auto; }
 body.devMobile #jim-container.touch { cursor: url('../images/touch.cur') 16 16, auto; }
-body.devMobile #jim-container.touch * { cursor: url('./resources/_jim/css/images/touch.cur'), auto;  }
 body.devMobile #jim-container.touch * { cursor: url('../images/touch.cur') 16 16, auto; }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     body.devMobile #jim-container.touch { cursor: url('./resources/jim/css/images/touch.cur'), auto; }
+	 body.devMobile #jim-container.touch * { cursor: url('./resources/jim/css/images/touch.cur'), auto;  }
+}
+
 body.devMobile #jim-container { cursor: none; }
 body.devMobile .menu { cursor: inherit; }
 body.devMobile .menunode { cursor: inherit; }

@@ -1060,8 +1060,10 @@
     "jimFocusOn": function(args, callback) {
     	 var self = this;
          if(args && args.target) {
-           jimUtil.jimFocusOn(self.getEventTarget(args.target[0]));
-           if(callback) { callback(); }
+           setTimeout( function () {
+				jimUtil.jimFocusOn(self.getEventTarget(args.target[0]));
+				if(callback) { callback(); }
+		   }, 0);
          }
     },
     "jimScrollTo": function(args, callback) {
@@ -1148,11 +1150,20 @@
                       }
                     } catch (e) {}
                     break;
-                  case itemType.text:
-                  case itemType.password:
                   case itemType.date:
                   case itemType.time:
                   case itemType.datetime:
+                    	if (jimUtil.isMobileDevice()) {
+                      		var mobileDate = jimDate.convertToFormatMobile(value, $target);
+                      		$target.find("input").val(jimUtil.fromHTML(mobileDate));
+                      	}
+                      	else {
+    	                  	$target.find("input").val(jimUtil.fromHTML(value));
+    	                  	$target.trigger("parsedate", []);
+                        }
+                    break;
+                  case itemType.text:
+                  case itemType.password:
                     $target.find("input").val(jimUtil.fromHTML(value));
                     break;
                   case itemType.file:
@@ -1561,10 +1572,6 @@
 
 
                   $target.animate(properties, effect);
-
-                  if ($target.hasClass("image") && $target.children().length > 0) {
-                	$target.children().animate(properties, effect);
-                  }
                 } else {
                   $target.css(properties);
 
@@ -1685,7 +1692,18 @@
 
 	        if(callback && !args.effect) { callback(); }
 	      }
-	    }
+	    },
+	 "jimChangeCursor": function(args, callback) {
+        if(args.type) {
+        	if(jimDevice.isMobile() || jimUtil.isMobileDevice()) {}
+        	else {
+        		$("#simulation").css({ 
+        			cursor: args.type
+        		});
+        	}
+        	if(callback) { callback(); }
+        }
+      }
   });
 
 })(window);

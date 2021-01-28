@@ -31,7 +31,7 @@
 
 #sidepanel #user-image.userImage {
     background-position: inherit;
-    background-size: 50px 50px;
+    background-size: contain;
     border: 1px solid #505050;
     border-radius: 50%;
     -webkit-background-clip: padding-box;
@@ -244,7 +244,7 @@
 
 .groupComments .user-comment-img.userImage {
     background-position: 0px 0px;
-    background-size: 38px 38px;
+    background-size: contain;
     border-radius:50%;
     -webkit-background-clip: padding-box; 
     -moz-background-clip: padding; 
@@ -615,7 +615,7 @@ only screen and (                min-resolution: 2dppx)
 .attachment-img{background-position: -54px -26px !important;width: 12px;height: 18px;}
 .delete_attach{background-position:-187px 0px !important;width:8px;height:7px;}
 .message span.warning{background-position:34px -120px !important;width:16px;height:15px;}
-.user_picture_more{background-position:-171px -70px !important;width:12px;height:12px;}
+.user_picture_more{background-position:-171px -73px !important;width:12px;height:12px;}
 .viewmode .attachment-img{background-position: -54px -27px !important;width: 14px;height: 18px;}
 /*END SPRITES*/
 

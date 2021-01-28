@@ -26,39 +26,14 @@
      if(typeof(jQuery.fn.dataview) === "function") {
     	 dataComponents = $target.find(".datalist,.datagrid").dataview();
      }
-
-     if(!jimDevice.isMobile() || (jimDevice.isMobile() && !jimDevice.isIOS())) {
-	     $target.find(".date").each(function(){
-	    	 var $date = jQuery(this);
-	    	 $date.find("input").datepicker();
-	    	 if($date.find("input").attr("readonly") != undefined){
-	    		$.datepicker._disableDatepicker($date.find("input")[0]);
-	    	 }
-	     });
-
-	     $target.find(".time").each(function(){
-	    	 var $date = jQuery(this);
-	    	 $date.find("input").timepicker();
-	     	if($date.find("input").attr("readonly") != undefined){
-	    		$.datepicker._disableDatepicker($date.find("input")[0]);
-	    	 }
-	     });
-
-	     $target.find(".datetime").each(function(){
-	    	 var $date = jQuery(this);
-	    	 $date.find("input").datetimepicker();
-	     	if($date.find("input").attr("readonly") != undefined){
-	    		$.datepicker._disableDatepicker($date.find("input")[0]);
-	    	 }
-	     });
-     }
      
+     jimDate.init();
      $target.trigger("renderresponsive");
      jimShapes.renderAll(jQuery(".non-processed-shape"));
      if(dataComponents && dataComponents.length>0)
      	jimPin.addScrollListeners(dataComponents);
   })
-  .bind("preComponentLoading",function(event, data){
+  .bind("preComponentLoading",function(event, data) {
 	  var transitionEffect = data.transitionEffect;
 	  var $to = data.target;
 	 $("#simulation").trigger("renderresponsive");

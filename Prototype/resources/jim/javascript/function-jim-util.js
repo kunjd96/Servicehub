@@ -2458,33 +2458,6 @@
 			  wrapHorizontalLayoutObject(wrapper, true);
 		  }
 		},
-		"bindDateWidgets" : function ($target) {
-	      if(!jimDevice.isMobile() || (jimDevice.isMobile() && !jimDevice.isIOS())) {
-		    $target.find(".date").each(function(){
-		      var $date = jQuery(this);
-		      $date.find("input").datepicker();
-		      if($date.find("input").attr("readonly") != undefined){
-		    	$.datepicker._disableDatepicker($date.find("input")[0]);
-		      }
-		    });
-
-		    $target.find(".time").each(function(){
-		      var $date = jQuery(this);
-		      $date.find("input").timepicker();
-		      if($date.find("input").attr("readonly") != undefined){
-		    	$.datepicker._disableDatepicker($date.find("input")[0]);
-		      }
-		    });
-
-		    $target.find(".datetime").each(function(){
-		      var $date = jQuery(this);
-		      $date.find("input").datetimepicker();
-		      if($date.find("input").attr("readonly") != undefined){
-		        $.datepicker._disableDatepicker($date.find("input")[0]);
-		      }
-		    });
-	      }
-		},
 		"getItemMarginWidth" : function ($item) {
 		  var left, top, bottom, right;
 		  left = top = bottom = right = 0;

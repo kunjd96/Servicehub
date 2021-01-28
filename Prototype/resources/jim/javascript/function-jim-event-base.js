@@ -6,7 +6,7 @@
   jQuery.extend(jimEvent.fn, {
     /*************************** START SUPPORT FUNCTIONS ***************************/
     "launchCases": function(cases) {
-      if (!jimUtil.isAlternateModeActive() && jimUtil.exists(cases) && cases.length) {
+      if (jimUtil.exists(cases) && cases.length) {
         try {
           this.event.stopPropagation();
           this.executeCases(cases);
@@ -544,6 +544,15 @@
               }
             }
           }
+          undoActions.push(undoAction);
+          break;
+        case "jimChangeCursor":
+          undoAction = {
+            "action": "jimChangeCursor",
+            "parameter": {
+	          "type": $("#simulation").css("cursor")
+			}
+          };
           undoActions.push(undoAction);
           break;
         case "jimNavigation":

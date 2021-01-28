@@ -506,11 +506,13 @@
     	              	value = $target.find("input").is(":checked");
     	            }
     	            break;
-    	        case itemType.text:
-    	        case itemType.password:
     	        case itemType.date:
     	        case itemType.time:
     	        case itemType.datetime:
+    	        	value = jimDate.getValueToUSFormat($target);
+    	        	break;
+    	        case itemType.text:
+    	        case itemType.password:
     	        case itemType.file:
     	        	value = $target.find("input").val();
     	            break;

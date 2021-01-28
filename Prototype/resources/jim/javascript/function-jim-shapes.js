@@ -316,10 +316,6 @@
                     if (style.attributes["top"] != null || style.attributes["left"] != null)
                         SVGEngine.updatePosition(shapeSVG);
 
-                    //UPDATE OPACITY
-                    if(style.attributes["opacity"]){
-                        SVGEngine.updateOpacity(shapeSVG);
-                    }
                     if(style.attributes["stroke-width"]){
                         $(shapeSVG).css("stroke-width",parseInt(style.attributes["stroke-width"]));
                         shapeSVG.css2svg['border-width'] = parseInt(style.attributes["stroke-width"])/2;
@@ -334,7 +330,7 @@
             }
 
         	  if(shapeSVG.shapeType === "line"){
-				         SVGEngine.updateLine(shapeSVG, shapePath);
+				         SVGEngine.updateLine(shapeSVG, shapePath, style);
          	  }
             if(!init || shapeSVG.shapeType !== "line"){
             	//UPDATE TRANSFORM (rotation)
@@ -351,12 +347,12 @@
             }
             //UPDATE BACKGROUND
             SVGEngine.updateBackground(shapeSVG);
-            //UPDATE BOX SHADOW
-            SVGEngine.updateBoxShadow(shapeSVG);
         },
-        "updateLine" : function(shapeSVG, shapePath){
-        	shapeSVG.setAttribute("d", SVGEngine._getLinePathClipped(shapeSVG,shapePath));
+        "updateLine" : function(shapeSVG, shapePath, style){
+			if(style)
+        		shapeSVG.setAttribute("d", SVGEngine._getLinePathClipped(shapeSVG,shapePath));
             //update MARKERS
+			//TODO should be prebuild like path
             SVGEngine._updateMarkers(shapeSVG);
         },
         "updateIDs" : function(shapeSVG) {
@@ -526,137 +522,6 @@
             }
         },
 
-        "updateBoxShadow" : function(shapeSVG){
-        	if(jimUtil.isIE()) {
-        		 if(jQuery.browser.version<=9)
-        			 return;
-        		 else if(shapeSVG.shapeType === 'line')
-        			 return;
-        	}
-        	var boxShadow =  $(shapeSVG).shapeStyle('box-shadow');
-        	if(boxShadow === undefined  || boxShadow === null || boxShadow === "")
-        		return;
-        	if(boxShadow === "none"){
-				$(shapeSVG.svg).children("g")[0].removeAttribute("filter");
-				$(shapeSVG.svg).children("defs").children("filter").remove();
-//				$(shapeSVG.svg).css("width",  "100%");
-//				$(shapeSVG.svg).css("height", "100%");
-				$(shapeSVG.svg).css("left",0);
-				$(shapeSVG.svg).css("top",0);
-			    $(shapeSVG.svg).children("g")[0].setAttribute("transform","translate(0,0)");
-				return;
-			}
-        	var rgb;
-        	if(boxShadow.indexOf("rgb")===-1){
-        		rgb = boxShadow.substring(boxShadow.indexOf("#"));
-        	}else{
-        		rgb = boxShadow.slice("rgb")
-        		rgb = rgb.substring(0,rgb.indexOf(")")+1);
-        		boxShadow =  boxShadow.substring(boxShadow.indexOf(")")+2);
-        	}
-        	var values = boxShadow.split(" ");
-
-        	var dx = parseInt(values[0]);
-        	var dy = parseInt(values[1]);
-        	var blur = parseInt(values[2]);
-        	var spread = parseInt(values[3]);
-
-        	blur = blur /2; //In SVG, the standard deviation of the Gaussian blur is half the number that you would use to get the same blur with CSS
-
-        	if(dx === 0 && dy===0 && blur===0 && spread===0)
-				return;
-
-        	//create random id to avoid repeated patterns (ej:datagrids)
-            var random4Id = Math.round(Math.random() * 10000);
-        	var $defsObj = $(shapeSVG.svg).children("defs");
-        	 //delete current defs
-            $(shapeSVG.svg).children("defs").children("filter").remove();
-
-            var filter = document.createElementNS(SVGEngine.defaults.svgNS, "filter");
-
-            filter.setAttribute("id","filter-" + $(shapeSVG).prop("id") + random4Id);
-
-            var xtraSpace = 5;
-            var x = dx - (blur*2) -(spread*2)-xtraSpace;
-            var y = dy - (blur*2) -(spread*2) -xtraSpace;
-            var w = parseInt($(shapeSVG).shapeStyle("width"))+Math.abs(dx)+((blur)*2)+(spread*4)+xtraSpace;
-            var h = parseInt($(shapeSVG).shapeStyle("height"))+Math.abs(dy)+((blur)*2)+(spread*4)+xtraSpace;
-
-            filter.setAttribute("x", x>0 ? 0 : x);
-            filter.setAttribute("y",y>0 ? 0 : y);
-
-            filter.setAttribute("width",  w+"px");
-            //if(!$(shapeSVG.shapewrapper).is(".autofit"))
-            	filter.setAttribute("height", h+"px");
-            filter.setAttribute("filterUnits", "userSpaceOnUse");
-            $defsObj.append(filter);
-
-            if(spread>0){
-            	var gaussianBlurSpread  = document.createElementNS(SVGEngine.defaults.svgNS, "feGaussianBlur");
-            	gaussianBlurSpread.setAttribute("in","SourceAlpha");
-            	gaussianBlurSpread.setAttribute("stdDeviation",spread/2);
-            	jQuery(filter).append(gaussianBlurSpread);
-
-            	var componentTransferSpread  = document.createElementNS(SVGEngine.defaults.svgNS, "feComponentTransfer");
-            	componentTransferSpread.setAttribute("result","transfer");
-            	jQuery(filter).append(componentTransferSpread);
-
-            	var funcA  = document.createElementNS(SVGEngine.defaults.svgNS, "feFuncA");
-            	funcA.setAttribute("type","table");
-            	funcA.setAttribute("tableValues","0 1 1 1 1 1 1 1 1 1 1 1 1 1");
-            	jQuery(componentTransferSpread).append(funcA);
-
-            }
-
-            var gaussianBlur  = document.createElementNS(SVGEngine.defaults.svgNS, "feGaussianBlur");
-            gaussianBlur.setAttribute("in",spread>0 ? "transfer" : "SourceAlpha");
-            gaussianBlur.setAttribute("stdDeviation",blur);
-            jQuery(filter).append(gaussianBlur);
-
-            var offset  = document.createElementNS(SVGEngine.defaults.svgNS, "feOffset");
-
-            offset.setAttribute("result","offsetBlur");
-            offset.setAttribute("dx",dx);
-            offset.setAttribute("dy",dy);
-            jQuery(filter).append(offset);
-
-
-            var flood  = document.createElementNS(SVGEngine.defaults.svgNS, "feFlood");
-            flood.setAttribute("flood-color",rgb);
-            flood.setAttribute("flood-opacity",1);
-            jQuery(filter).append(flood);
-
-            var composite  = document.createElementNS(SVGEngine.defaults.svgNS, "feComposite");
-            composite.setAttribute("in2", "offsetBlur");
-            composite.setAttribute("operator","in");
-            jQuery(filter).append(composite);
-
-
-            var merge = document.createElementNS(SVGEngine.defaults.svgNS, "feMerge");
-            jQuery(filter).append(merge);
-            var merge1 = document.createElementNS(SVGEngine.defaults.svgNS, "feMergeNode");
-            jQuery(merge).append(merge1);
-
-            var merge2 = document.createElementNS(SVGEngine.defaults.svgNS, "feMergeNode");
-            merge2.setAttribute("in","SourceGraphic");
-            jQuery(merge).append(merge2);
-
-           $(shapeSVG.svg).children("g")[0].setAttribute("filter", "url(#" + filter.getAttribute("id") + ")");
-
-
-           $(shapeSVG.svg).css("width",  w);
-           //if(!$(shapeSVG.shapewrapper).is(".autofit"))
-           	$(shapeSVG.svg).css("height", h);
-
-
-           x= x>0 ? 0 : x;
-           y= y>0 ? 0 : y;
-           $(shapeSVG.svg).css("left",x);
-           $(shapeSVG.svg).css("top",y);
-           $(shapeSVG.svg).children("g")[0].setAttribute("transform","translate("+Math.abs(x)+","+Math.abs(y)+")");
-
-       },
-
         "_setBorderWidth" : function(shapeSVG, borderWidth) {
             shapeSVG.css2svg["stroke-width"] = borderWidth;
         },
@@ -815,7 +680,7 @@
             var $paddingLayer = $(shapeSVG.shapewrapper).children(".paddingLayer");
             var $content = $(shapeSVG.shapewrapper).find(".content");
             var $shapertContentSpan = $content.find("span");
-            if($shapertContentSpan.length>0)
+            if($shapertContentSpan.length>0 && $shapertContentSpan.text().length>0)
             	$content.css("font-size", $shapertContentSpan.shapeStyle("font-size"));
 
             var textSize = this.calculateTextPrefSize(shapeSVG,shapeNewWidth);
@@ -905,9 +770,10 @@
             span = spans[t];
             var bounds = span.getBoundingClientRect();
             maxY = Math.max(maxY,parseInt(bounds.bottom));
-            if(t==0)
+            if(t==0) {
               minY = parseInt(bounds.top);
-            else
+			  maxY = parseInt(bounds.bottom);
+            } else
               minY = Math.min(minY,parseInt(bounds.top));
           }
           return maxY-minY;
@@ -941,12 +807,6 @@
 
         "_setBoxShadow" : function(shapeSVG, shadow) {
             shapeSVG.css2svg["box-shadow"] = shadow;
-        },
-
-        "updateOpacity" : function(shapeSVG) {
-            $(shapeSVG.shapewrapper).css("opacity", $(shapeSVG).shapeStyle('opacity'));
-            shapeSVG.css2svg["opacity"] = $(shapeSVG).shapeStyle('opacity');
-            $(shapeSVG).css("opacity","1");
         },
 
         "_updateSVGBox" : function(shapeSVG, width, height) {
@@ -1008,38 +868,47 @@
      },
 
          "_updateMarkers" : function(shapeSVG) {
-            var borderWidth = parseInt($(shapeSVG).shapeStyle("stroke-width"));
+			var startMarker = $(shapeSVG).is(".sMarker");
+			var endMarker = $(shapeSVG).is(".eMarker");
+			var borderWidth=0;
+			if(startMarker || endMarker){
+				 borderWidth = parseInt($(shapeSVG).shapeStyle("stroke-width"));
+			}
             var markerWidth;
             //scale markers
-            var $startMarker = $(shapeSVG.svg).children("defs").children('[id^=start-marker]');
-            if($startMarker.length != 0){
-                markerWidth = SVGEngine._getMarkerHeight($startMarker,borderWidth);
-                $startMarker[0].setAttribute("markerWidth",markerWidth+"px");
-                $startMarker[0].setAttribute("markerHeight",markerWidth+"px");
-                $startMarker[0].setAttribute("refX", parseInt((100 * (markerWidth - borderWidth)) / markerWidth));
-                $startMarker[0].setAttribute("refY","50");
+			if(startMarker){
+	            var $startMarker = $(shapeSVG.svg).children("defs").children('[id^=start-marker]');
+	            if($startMarker.length != 0){
+	                markerWidth = SVGEngine._getMarkerHeight($startMarker,borderWidth);
+	                $startMarker[0].setAttribute("markerWidth",markerWidth+"px");
+	                $startMarker[0].setAttribute("markerHeight",markerWidth+"px");
+	                $startMarker[0].setAttribute("refX", parseInt((100 * (markerWidth - borderWidth)) / markerWidth));
+	                $startMarker[0].setAttribute("refY","50");
+	
+	                if(jQuery.browser.msie && jQuery.browser.version>=9){
+	                    //force markers update for IE9 & IE10
+	                    $startMarker.remove();
+	                    $(shapeSVG.svg).children("defs").append($startMarker);
+	                }
+	            }
+			}
 
-                if(jQuery.browser.msie && jQuery.browser.version>=9){
-                    //force markers update for IE9 & IE10
-                    $startMarker.remove();
-                    $(shapeSVG.svg).children("defs").append($startMarker);
-                }
-            }
-
-            var $endMarker = $(shapeSVG.svg).children("defs").children('[id^=end-marker]');
-            if($endMarker.length != 0){
-                markerWidth = SVGEngine._getMarkerHeight($endMarker,borderWidth);
-                $endMarker[0].setAttribute("markerWidth",markerWidth+"px");
-                $endMarker[0].setAttribute("markerHeight",markerWidth+"px");
-                $endMarker[0].setAttribute("refX",parseInt((100 * (markerWidth - borderWidth)) / markerWidth));
-                $endMarker[0].setAttribute("refY","50");
-
-                if(jQuery.browser.msie && jQuery.browser.version>=9){
-                    //force markers update for IE9 & IE10
-                    $endMarker.remove();
-                    $(shapeSVG.svg).children("defs").append($endMarker);
-                }
-            }
+			if(endMarker){
+	            var $endMarker = $(shapeSVG.svg).children("defs").children('[id^=end-marker]');
+	            if($endMarker.length != 0){
+	                markerWidth = SVGEngine._getMarkerHeight($endMarker,borderWidth);
+	                $endMarker[0].setAttribute("markerWidth",markerWidth+"px");
+	                $endMarker[0].setAttribute("markerHeight",markerWidth+"px");
+	                $endMarker[0].setAttribute("refX",parseInt((100 * (markerWidth - borderWidth)) / markerWidth));
+	                $endMarker[0].setAttribute("refY","50");
+	
+	                if(jQuery.browser.msie && jQuery.browser.version>=9){
+	                    //force markers update for IE9 & IE10
+	                    $endMarker.remove();
+	                    $(shapeSVG.svg).children("defs").append($endMarker);
+	                }
+	            }
+			}
          },
 
          "_updateColorMarkers" : function(shapeSVG) {
@@ -1060,13 +929,16 @@
              leftClipping = 0,
              rightClipping = width;
 
-             var $startMarker = jQuery(shapeSVG.shapewrapper).find(".startmarker");
-             var $endMarker = jQuery(shapeSVG.shapewrapper).find(".endmarker");
-
-             if($startMarker.length > 0 && !$startMarker.is(".none"))
-                leftClipping = lineWidth;
-             if($endMarker.length > 0 && !$endMarker.is(".none"))
-                rightClipping = width - lineWidth;
+             if($(shapeSVG).is(".sMarker")){
+				var $startMarker = jQuery(shapeSVG.shapewrapper).find(".startmarker");
+				if($startMarker.length > 0 && !$startMarker.is(".none"))
+                	leftClipping = lineWidth;
+			}
+			if($(shapeSVG).is(".eMarker")){
+			  	var $endMarker = jQuery(shapeSVG.shapewrapper).find(".endmarker");
+             	if($endMarker.length > 0 && !$endMarker.is(".none"))
+                	rightClipping = width - lineWidth;
+			}
 
               return "M "+ leftClipping + " " + parseInt(height/2) +" L "+ rightClipping + " " + parseInt(height/2);
          },

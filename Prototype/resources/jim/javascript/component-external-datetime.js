@@ -756,6 +756,11 @@
 			}
 		},
 
+		// Justinmind fix: trigger parsedate to input
+		_triggerParseDate: function() {
+			this.$input.trigger("parsedate");
+		},
+
 		/*
 		* update our input with the new date time..
 		*/
@@ -813,6 +818,7 @@
 				this.$input.val(formattedDateTime);
 			}
 
+			this._triggerParseDate();
 			this.$input.trigger("change");
 		},
 
@@ -1256,11 +1262,13 @@
 			inst.inline = inst.stay_open = true;
 			//This way the onSelect handler called from calendarpicker get the full dateTime
 			this._base_selectDate(id, dateStr);
+			tp_inst._triggerParseDate();
 			inst.inline = inst.stay_open = false;
 			this._notifyChange(inst);
 			this._updateDatepicker(inst);
 		} else {
 			this._base_selectDate(id, dateStr);
+			inst.input.trigger("parsedate");
 		}
 	};
 
@@ -1907,8 +1915,8 @@
 	 * @return void
 	 */
 	$.timepicker.log = function(err){
-		if(window.console)
-			console.log(err);
+		/* if(window.console)
+			 console.log(err); // Since we are using other date formatter on Justinmind, we do not log errors (parsing errors...) */
 	};
 
 	/*

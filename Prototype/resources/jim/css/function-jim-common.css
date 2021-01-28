@@ -31,6 +31,7 @@ body.web #jim-web{ display:block; }
     height: 100%;
 }
 
+.commentsMode .imagemap, .developersMode .imagemap { display: none; }
 #jim-mobile{ display:none; }
 #toppanel{ display:none; }
 

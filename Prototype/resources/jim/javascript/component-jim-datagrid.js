@@ -142,7 +142,7 @@
             	}
               });
             }
-            if(!window.jimDevice.isMobile() || jimDevice.isMobile() && !jimUtil.isMobileDevice()){
+            if(!jimUtil.isMobileDevice()){
               changeInputType($grid);
             }
 
@@ -164,7 +164,8 @@
 		if (!updatedBounds)
 			$grid.dataview("updateDataListBounds");
 		jimUtil.refreshDynamicPanelResponsiveSize($grid);
-        jimUtil.bindDateWidgets($grid);
+		jimDate.disableInputs($grid);
+        jimDate.setInputFormat($grid);
         jimUtil.refreshPageMinSize();
     },
     "updateDataGrid": function(instances, options) {
@@ -206,7 +207,7 @@
             	}
               });
             }
-            if(!window.jimDevice.isMobile() || window.jimDevice.isMobile() && !jimUtil.isMobileDevice()){
+            if(!jimUtil.isMobileDevice()){
               changeInputType($grid);
             }
 
@@ -224,7 +225,8 @@
             $grid.trigger("update.dataview");
           }
         }
-        jimUtil.bindDateWidgets($grid);
+        jimDate.disableInputs($grid);
+        jimDate.setInputFormat($grid);
 		jimUtil.refreshDynamicPanelResponsiveSize($grid);
         jimUtil.refreshPageMinSize();
     },

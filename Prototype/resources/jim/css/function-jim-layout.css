@@ -691,16 +691,11 @@ body.isDeveloper #topbar-mode-developer.topBarToggleButton {
     margin-top: 11px;
 }
 
-#infoContent #logo div {
-    background-image: url('./../images/sidepanel/logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-	position: absolute;
-    height: 26px;
-    top: 5px;
-    left: 11px;
-    width: 135px;
+#infoContent #logo img {
+	object-fit: contain;
+	position: relative;
+    height: 100%;
+    top: 8px;
 }
 
 #infoContent #toggle-panel-btn {
@@ -710,7 +705,7 @@ body.isDeveloper #topbar-mode-developer.topBarToggleButton {
     vertical-align: top;
 }
 
-#infoContent #info { display:inline-block; height:26px; padding-top:6px; margin-right:10px;}
+#infoContent #info { display:inline-block; height:26px; padding-top:7px; margin-right:10px;}
 #infoContent  span { text-overflow: ellipsis; -o-text-overflow: ellipsis; -webkit-text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display:inline-block;}
 #infoContent span.light {margin-top:-2px;}
 #infoContent #scenarioName {color: #21C0C0; text-decoration: underline; cursor: pointer; vertical-align: bottom; margin-right: 2px;}
@@ -820,7 +815,7 @@ body.isDeveloper #topbar-mode-developer.topBarToggleButton {
 #topInfo .info-text-label{
     display:inline-block;
     margin-top:8px;
-    margin-left:10px;
+    margin-left:14px;
     vertical-align:top;
 }
 
@@ -861,11 +856,10 @@ span.customSelect.changed {
 }
 
 #logo{
-    width: 135px;
-    margin: 0 5px;
-    height: 20px;
+    max-width: 175px;
+    margin: 0 5px 0 11px;
+    height: 23px;
     display:inline-block;
-    vertical-align:bottom;
 }
 
 #highlightSwitch {

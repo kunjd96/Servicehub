@@ -548,7 +548,7 @@
        if(typeof(annotation) !== "undefined") { annotation.unload(); }
     })
     .bind("canvasload", function(event, data) {
-       if(!jimDevice.isMobile() || jimDevice.isMobile() && !jimUtil.isMobileDevice())
+       if(!jimUtil.isMobileDevice())
          changeInputType();
        //load specific details of iOS Safari browser
        if(jimUtil.isiOSDevice() && jQuery(".web, .mobilecustom").length>0) {

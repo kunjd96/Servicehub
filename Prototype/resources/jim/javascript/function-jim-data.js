@@ -28,13 +28,13 @@
       "clearData": function() {
         window.initLoad = true;
         if(!jimMain.isPopup(window)) {
-          window.top.name = "";
+          window.self.name = "";
         }
       },
       "load": function(windowRef) {
         var json, data;
         if(!jimMain.isPopup(windowRef)) {
-          json = window.top.name;
+          json = window.self.name;
           if(json !== "") {
             try {
               data = JSON.parse(json);
@@ -62,7 +62,7 @@
             "isInitialized": jimData.isInitialized
           };
           try {
-            window.top.name = JSON.stringify(data);
+            window.self.name = JSON.stringify(data);
           } catch(error) {
             jimUtil.debug(error); /* invalid JSON */
           }
