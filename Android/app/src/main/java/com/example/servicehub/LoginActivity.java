@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         createAccountTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, SignupActivity.class);
+                Intent i = new Intent(LoginActivity.this, UserRoleActivity.class);
                 startActivity(i);
             }
         });
