@@ -35,6 +35,7 @@ public class UserRoleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(UserRoleActivity.this, SignupActivity.class);
+                i.putExtra("role","Client");
                 startActivity(i);
             }
         });
@@ -43,6 +44,7 @@ public class UserRoleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(UserRoleActivity.this, SignupActivity.class);
+                i.putExtra("role","Service Provider");
                 startActivity(i);
             }
         });

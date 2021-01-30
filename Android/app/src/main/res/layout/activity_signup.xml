@@ -41,7 +41,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageView"
+                            android:id="@+id/titleImageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
@@ -56,18 +56,19 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
-
                             android:layout_marginTop="30dp"
                             android:layout_marginEnd="30dp"
                             android:hint="First name"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView">
+                            app:layout_constraintTop_toBottomOf="@+id/titleImageView">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/firstNameTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_account_box_24"
                                 android:drawablePadding="10sp" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -78,10 +79,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
-
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
                             android:hint="Last name"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/edit_text_first_name">
@@ -90,6 +91,7 @@
                                 android:id="@+id/lastNameTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_account_box_24"
                                 android:drawablePadding="10sp" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -100,10 +102,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
-
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
                             android:hint="Email"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/edit_text_last_name">
@@ -112,6 +114,7 @@
                                 android:id="@+id/emailTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_email_24"
                                 android:drawablePadding="10sp" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -125,6 +128,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
                             android:hint="Password"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/edit_text">
@@ -133,6 +137,7 @@
                                 android:id="@+id/passwordTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                                 android:drawablePadding="10sp"
 
@@ -148,6 +153,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
                             android:hint="Confirm Password"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/edit_text2">
@@ -156,6 +162,7 @@
                                 android:id="@+id/confirmPasswordTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                                 android:drawablePadding="10sp"
 
@@ -171,6 +178,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
                             android:hint="Phone number"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/edit_text3">
@@ -179,6 +187,7 @@
                                 android:id="@+id/phoneNumberTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_local_phone_24"
                                 android:drawablePadding="10sp"
 
@@ -207,6 +216,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="10dp"
                             android:hint="Apt"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/lineView1">
 
@@ -214,6 +224,7 @@
                                 android:id="@+id/aptNumTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_apartment_24"
                                 android:drawablePadding="10sp"
 
@@ -229,6 +240,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
                             android:hint="Address"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/edit_text5"
                             app:layout_constraintTop_toBottomOf="@+id/lineView1">
@@ -237,6 +249,7 @@
                                 android:id="@+id/addressLineTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_location_on_24"
                                 android:drawablePadding="10sp"
 
@@ -252,6 +265,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:hint="City"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toStartOf="@+id/edit_text8"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/edit_text5">
@@ -260,6 +274,7 @@
                                 android:id="@+id/CityTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_location_city_24"
                                 android:drawablePadding="10sp"
 
@@ -276,6 +291,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
                             android:hint="Province"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/edit_text7"
                             app:layout_constraintTop_toBottomOf="@+id/edit_text5">
@@ -284,6 +300,7 @@
                                 android:id="@+id/ProvinceTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_location_city_24"
                                 android:drawablePadding="10sp"
 
@@ -299,6 +316,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
                             android:hint="Postal Code"
+                            app:hintTextColor="@color/gradient1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/edit_text7">
@@ -307,6 +325,7 @@
                                 android:id="@+id/postalCodeTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/gradient1"
                                 android:drawableLeft="@drawable/ic_baseline_fiber_pin_24"
                                 android:drawablePadding="10sp"
 
@@ -329,36 +348,50 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <Spinner
-                            android:id="@+id/spinner2"
+                            android:id="@+id/serviceListSpinner"
                             android:layout_width="match_parent"
-                            android:layout_height="50sp"
+                            android:layout_height="60sp"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
+                            android:textColor="@color/gradient1"
+                            android:background="@drawable/spinner_background"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/lineView2" />
 
+                        <ImageView
+                            android:id="@+id/serviceListSpinnerImageView"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/ic_baseline_arrow_drop_down_24"
+                            app:layout_constraintBottom_toBottomOf="@+id/serviceListSpinner"
+                            app:layout_constraintEnd_toEndOf="@+id/serviceListSpinner"
+                            app:layout_constraintTop_toTopOf="@+id/serviceListSpinner" />
+
                         <Button
-                            android:id="@+id/loginButton"
+                            android:id="@+id/nextButton"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="30dp"
-                            android:layout_marginBottom="20dp"
+                            android:layout_marginBottom="30dp"
                             android:background="@color/gradient1"
                             android:paddingLeft="30dp"
                             android:paddingTop="12dp"
                             android:paddingRight="30dp"
                             android:paddingBottom="12dp"
-                            android:text="Login"
+                            android:text="Next"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+                            app:layout_constraintTop_toBottomOf="@+id/serviceListSpinner" />
+
+
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
