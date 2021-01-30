@@ -2,8 +2,8 @@ var content='<div class="ui-page" deviceName="androidphone" deviceType="mobile" 
     <div id="t-f39803f7-df02-4169-93eb-7547fb8c961a" class="template growth-both devMobile canvas firer commentable non-processed" alignment="left" name="Template 1" width="360" height="740">\
     <div id="backgroundBox"><div class="colorLayer"></div><div class="imageLayer"></div></div>\
     <div id="alignmentBox">\
-      <link type="text/css" rel="stylesheet" href="./resources/templates/f39803f7-df02-4169-93eb-7547fb8c961a-1611805635157.css" />\
-      <!--[if IE]><link type="text/css" rel="stylesheet" href="./resources/templates/f39803f7-df02-4169-93eb-7547fb8c961a-1611805635157-ie.css" /><![endif]-->\
+      <link type="text/css" rel="stylesheet" href="./resources/templates/f39803f7-df02-4169-93eb-7547fb8c961a-1612037373775.css" />\
+      <!--[if IE]><link type="text/css" rel="stylesheet" href="./resources/templates/f39803f7-df02-4169-93eb-7547fb8c961a-1612037373775-ie.css" /><![endif]-->\
       <!--[if lte IE 8]><![endif]-->\
       <div class="freeLayout">\
       </div>\
@@ -15,9 +15,9 @@ var content='<div class="ui-page" deviceName="androidphone" deviceType="mobile" 
     <div id="s-7faf7097-ce4f-44d5-93d7-4ab5b779e8ef" class="screen growth-vertical devMobile canvas PORTRAIT firer ie-background commentable non-processed" alignment="left" name="LoginPage" width="360" height="740">\
     <div id="backgroundBox"><div class="colorLayer"></div><div class="imageLayer"></div></div>\
     <div id="alignmentBox">\
-      <link type="text/css" rel="stylesheet" href="./resources/screens/7faf7097-ce4f-44d5-93d7-4ab5b779e8ef-1611805635157.css" />\
-      <!--[if IE]><link type="text/css" rel="stylesheet" href="./resources/screens/7faf7097-ce4f-44d5-93d7-4ab5b779e8ef-1611805635157-ie.css" /><![endif]-->\
-      <!--[if lte IE 8]><link type="text/css" rel="stylesheet" href="./resources/screens/7faf7097-ce4f-44d5-93d7-4ab5b779e8ef-1611805635157-ie8.css" /><![endif]-->\
+      <link type="text/css" rel="stylesheet" href="./resources/screens/7faf7097-ce4f-44d5-93d7-4ab5b779e8ef-1612037373775.css" />\
+      <!--[if IE]><link type="text/css" rel="stylesheet" href="./resources/screens/7faf7097-ce4f-44d5-93d7-4ab5b779e8ef-1612037373775-ie.css" /><![endif]-->\
+      <!--[if lte IE 8]><link type="text/css" rel="stylesheet" href="./resources/screens/7faf7097-ce4f-44d5-93d7-4ab5b779e8ef-1612037373775-ie8.css" /><![endif]-->\
       <div class="freeLayout">\
       <div id="s-Group_1" class="group firer ie-background commentable non-processed" customid="backgroud" datasizewidth="0.0px" datasizeheight="0.0px" >\
         <div id="s-Rectangle_1" class="pie rectangle manualfit firer commentable non-processed" customid="Rectangle 1"   datasizewidth="360.0px" datasizeheight="740.0px" datasizewidthpx="360.0" datasizeheightpx="739.9999999999998" dataX="0.0" dataY="0.0" >\
@@ -116,7 +116,7 @@ var content='<div class="ui-page" deviceName="androidphone" deviceType="mobile" 
         </div>\
       </div>\
 \
-      <div id="s-Button_1" class="pie button multiline manualfit firer commentable non-processed" customid="raised_Button"   datasizewidth="107.0px" datasizeheight="36.0px" dataX="126.5" dataY="460.0" >\
+      <div id="s-Button_1" class="pie button multiline manualfit firer click commentable non-processed" customid="raised_Button"   datasizewidth="107.0px" datasizeheight="36.0px" dataX="26.5" dataY="460.0" >\
         <div class="backgroundLayer">\
           <div class="colorLayer"></div>\
           <div class="imageLayer"></div>\
@@ -125,7 +125,7 @@ var content='<div class="ui-page" deviceName="androidphone" deviceType="mobile" 
           <div class="paddingLayer">\
             <div class="content">\
               <div class="valign">\
-                <span id="rtr-s-Button_1_0">Login</span>\
+                <span id="rtr-s-Button_1_0">Client Login</span>\
               </div>\
             </div>\
           </div>\
@@ -195,6 +195,21 @@ var content='<div class="ui-page" deviceName="androidphone" deviceType="mobile" 
         </div>\
       </div>\
 \
+      <div id="s-Button_2" class="pie button multiline manualfit firer click commentable non-processed" customid="raised_Button"   datasizewidth="107.0px" datasizeheight="36.0px" dataX="230.5" dataY="460.0" >\
+        <div class="backgroundLayer">\
+          <div class="colorLayer"></div>\
+          <div class="imageLayer"></div>\
+        </div>\
+        <div class="borderLayer">\
+          <div class="paddingLayer">\
+            <div class="content">\
+              <div class="valign">\
+                <span id="rtr-s-Button_2_0">SP Login</span>\
+              </div>\
+            </div>\
+          </div>\
+        </div>\
+      </div>\
       </div>\
 \
       </div>\
