@@ -17,11 +17,11 @@ import java.util.Random;
 import java.util.Random;
 
 public class ServiceProviderListAdapter extends RecyclerView.Adapter<ServiceProviderListRecyclerViewHolder> {
-    private Random random;
-
-    public ServiceProviderListAdapter(int seed) {
-        this.random = new Random(seed);
-    }
+//    private Random random;
+//
+//    public ServiceProviderListAdapter(int seed) {
+//        this.random = new Random(seed);
+//    }
 
     @Override
     public int getItemViewType(final int position) {
@@ -39,7 +39,23 @@ public class ServiceProviderListAdapter extends RecyclerView.Adapter<ServiceProv
     @Override
     public void onBindViewHolder(@NonNull ServiceProviderListRecyclerViewHolder holder, int position) {
 //        holder.getView().setText(String.valueOf(random.nextInt()));
-        holder.getView().setImageResource(R.drawable.client);
+        switch (position){
+            case 0: holder.getView().setImageResource(R.drawable.plumber);
+                    holder.getLabel().setText("Plumber");
+                break;
+            case 1: holder.getView().setImageResource(R.drawable.cosmetics);
+                    holder.getLabel().setText("Cosmetics");
+                break;
+            case 2: holder.getView().setImageResource(R.drawable.lamp);
+                    holder.getLabel().setText("Electrician");
+                break;
+            case 3: holder.getView().setImageResource(R.drawable.analytics);
+                    holder.getLabel().setText("Information tech ");
+                break;
+            default: holder.getView().setImageResource(R.drawable.plumber);
+                    holder.getLabel().setText("Plumber");
+                break;
+        }
     }
 
     @Override

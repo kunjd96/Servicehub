@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        recyclerView.setAdapter(new ServiceProviderListAdapter(1234));
+        recyclerView.setAdapter(new ServiceProviderListAdapter());
         return root;
     }
 }

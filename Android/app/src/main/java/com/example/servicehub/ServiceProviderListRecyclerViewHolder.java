@@ -13,13 +13,17 @@ public class ServiceProviderListRecyclerViewHolder extends RecyclerView.ViewHold
 
 
     private ImageView view;
+    private TextView label;
     public ServiceProviderListRecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
         view = itemView.findViewById(R.id.serviceProviderImageView);
+        label = itemView.findViewById(R.id.serviceProviderTextView);
     }
 
     public ImageView getView(){
         return view;
     }
+
+    public TextView getLabel() {return label; }
 
 }
