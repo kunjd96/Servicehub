@@ -69,6 +69,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="Arpit"
                                 android:drawableLeft="@drawable/ic_baseline_account_box_24"
                                 android:drawablePadding="10sp" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -92,6 +93,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="Mendpara"
                                 android:drawableLeft="@drawable/ic_baseline_account_box_24"
                                 android:drawablePadding="10sp" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -115,6 +117,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="arpit@gmail.com"
                                 android:drawableLeft="@drawable/ic_baseline_email_24"
                                 android:drawablePadding="10sp" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -138,6 +141,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="Arpit@123"
                                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                                 android:drawablePadding="10sp"
 
@@ -163,6 +167,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="Arpit@123"
                                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                                 android:drawablePadding="10sp"
 
@@ -188,6 +193,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="1231231231"
                                 android:drawableLeft="@drawable/ic_baseline_local_phone_24"
                                 android:drawablePadding="10sp"
 
@@ -225,6 +231,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="406"
                                 android:drawableLeft="@drawable/ic_baseline_apartment_24"
                                 android:drawablePadding="10sp"
 
@@ -250,6 +257,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="cote saint luc"
                                 android:drawableLeft="@drawable/ic_baseline_location_on_24"
                                 android:drawablePadding="10sp"
 
@@ -271,10 +279,11 @@
                             app:layout_constraintTop_toBottomOf="@+id/edit_text5">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/CityTextField"
+                                android:id="@+id/cityTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="Montreal"
                                 android:drawableLeft="@drawable/ic_baseline_location_city_24"
                                 android:drawablePadding="10sp"
 
@@ -297,10 +306,11 @@
                             app:layout_constraintTop_toBottomOf="@+id/edit_text5">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/ProvinceTextField"
+                                android:id="@+id/provinceTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="Quebec"
                                 android:drawableLeft="@drawable/ic_baseline_location_city_24"
                                 android:drawablePadding="10sp"
 
@@ -326,6 +336,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/gradient1"
+                                android:text="H4V1G5"
                                 android:drawableLeft="@drawable/ic_baseline_fiber_pin_24"
                                 android:drawablePadding="10sp"
 
@@ -375,7 +386,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="30dp"
                             android:layout_marginEnd="30dp"
                             android:layout_marginBottom="30dp"
                             android:background="@color/gradient1"

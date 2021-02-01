@@ -10,14 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceHub">
         <activity
-            android:name=".UserRoleActivity"
-            android:theme="@style/Theme.ServiceHub.NoActionBar">
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.ServiceHub.NoActionBar"></activity>
-        <activity
-            android:name=".LoginActivity"
+            android:name=".HomeScreenActivity"
+            android:label="@string/title_activity_home_screen"
             android:theme="@style/Theme.ServiceHub.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +20,21 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".UserRoleActivity"
+            android:theme="@style/Theme.ServiceHub.NoActionBar"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.ServiceHub.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.ServiceHub.NoActionBar">
+
+        </activity>
+        <activity
             android:name=".SignupActivity"
+            android:theme="@style/Theme.ServiceHub.NoActionBar" />
+        <activity
+            android:name=".AddAvailabilityActivity"
             android:theme="@style/Theme.ServiceHub.NoActionBar" />
     </application>
 

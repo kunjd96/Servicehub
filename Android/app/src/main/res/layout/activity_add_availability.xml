@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradientlinear"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:layout_gravity="center"
+        android:background="@drawable/glassgradient"
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/glassgradientcard2"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_margin="0dp"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/titleLabelTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:text="Enter your availability"
+                            android:textColor="@color/gradient1"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                        <TextView
+                            android:id="@+id/dayNameTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="50dp"
+                            android:text="Day Name"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/titleLabelTextView" />
+
+                        <TextView
+                            android:id="@+id/endTimeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginEnd="50dp"
+                            android:text="End Time"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/titleLabelTextView" />
+
+                        <TextView
+                            android:id="@+id/startTimeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginEnd="55dp"
+                            android:text="Start Time"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/endTimeTextView"
+                            app:layout_constraintTop_toBottomOf="@+id/titleLabelTextView" />
+
+                        <TextView
+                            android:id="@+id/mondayTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="Monday"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/monday_start_avail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/monday_start_avail" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/monday_start_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintEnd_toStartOf="@+id/monday_end_avail"
+                            app:layout_constraintTop_toBottomOf="@+id/endTimeTextView">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/mondayStartTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/monday_end_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="30dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/endTimeTextView">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/mondayEndTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lineView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:background="@color/gradient1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/monday_start_avail">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/tuesdayTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="Tuesday"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/tuesday_start_avail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/tuesday_start_avail" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tuesday_start_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintEnd_toStartOf="@+id/monday_end_avail"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView1">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tuesdayStartTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tuesday_end_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView1">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tuesdayEndTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lineView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:background="@color/gradient1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tuesday_start_avail">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/wednesdayTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="Wednesday"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/wednesday_start_avail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/wednesday_start_avail" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/wednesday_start_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintEnd_toStartOf="@+id/monday_end_avail"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView2">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/wednesdayStartTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/wednesday_end_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView2">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/wednesdayEndTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lineView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:background="@color/gradient1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/wednesday_start_avail">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/thursdayTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="Thursday"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/thursday_start_avail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/thursday_start_avail" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/thursday_start_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintEnd_toStartOf="@+id/monday_end_avail"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView3">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/thursdayStartTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/thursday_end_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView3">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/thursdayEndTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lineView4"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:background="@color/gradient1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/thursday_start_avail">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/fridayTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="Friday"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/friday_start_avail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/friday_start_avail" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/friday_start_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintEnd_toStartOf="@+id/monday_end_avail"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView4">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fridayStartTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/friday_end_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView4">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fridayEndTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lineView5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:background="@color/gradient1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/friday_start_avail">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/saturdayTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="Saturday"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/saturday_start_avail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/saturday_start_avail" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/saturday_start_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintEnd_toStartOf="@+id/monday_end_avail"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView5">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/saturdayStartTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/saturday_end_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView5">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/saturdayEndTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lineView6"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:background="@color/gradient1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/saturday_start_avail">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/sundayTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="Sunday"
+                            android:textColor="@color/gradient1"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/sunday_start_avail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/sunday_start_avail" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/sunday_start_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            app:layout_constraintEnd_toStartOf="@+id/monday_end_avail"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView6">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/sundayStartTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/sunday_end_avail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView6">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/sundayEndTextField"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:text="19:46"
+                                android:textColor="@color/gradient1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lineView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:background="@color/gradient1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sunday_start_avail">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <Button
+                            android:id="@+id/signUpButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:layout_marginBottom="30dp"
+                            android:background="@color/gradient1"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="12dp"
+                            android:paddingRight="30dp"
+                            android:paddingBottom="12dp"
+                            android:text="Sign Up"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lineView7" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
