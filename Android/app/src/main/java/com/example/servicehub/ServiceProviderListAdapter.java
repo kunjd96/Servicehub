@@ -44,6 +44,6 @@ public class ServiceProviderListAdapter extends RecyclerView.Adapter<ServiceProv
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 4;
     }
 }
