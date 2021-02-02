@@ -20,6 +20,6 @@ exports.protect = asyncHandler(async(req, res, next) => {
 
         next();
     } catch (error) {
-        return error; //next(new ErrorResponse("Not Authorised to access",400));
+        return next(new ErrorResponse("Not Authorised to access", 400));
     }
 });
