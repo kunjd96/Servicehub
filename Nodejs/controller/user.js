@@ -63,7 +63,7 @@ exports.register = asyncHandler(async(req, res, next) => {
 
         await user.remove(); //save({validateBeforeSave:false});
 
-        return console.log("Email Could not be sent"); //next (new ErrorResponse("Email could not be sent",500));
+        next(new ErrorResponse("Email could not be sent", 500));
     }
 
 
@@ -128,7 +128,7 @@ exports.login = asyncHandler(async(req, res, next) => {
     }
 
     if (user.Match() === false) {
-        return next(console.log("Email address not verifired!!"), 400);
+        return next(new ErrorResponse("Email address not verifired!!", 400));
     }
 
 
@@ -204,7 +204,7 @@ exports.resetPassowrd = asyncHandler(async(req, res, next) => {
     });
 
     if (!user) {
-        return console.log("Invalida Token"); //next(new E)
+        return next(new ErrorResponse("Invalid Token", 400));
     }
 
     //Set Password
@@ -216,7 +216,7 @@ exports.resetPassowrd = asyncHandler(async(req, res, next) => {
 
     const token = user.getSignedJwtToken();
     res.status(200).json({ success: true, token });
-    ``
+
 });
 
 
@@ -238,7 +238,7 @@ exports.validateUser = asyncHandler(async(req, res, next) => {
     });
 
     if (!user) {
-        return console.log("Invalida Token"); //next(new E)
+        return next(new ErrorResponse("Invalid Token", 400));
     }
 
     //Set Password
@@ -289,7 +289,7 @@ exports.forgotPassword = asyncHandler(async(req, res, next) => {
 
         await user.save({ validateBeforeSave: false });
 
-        return console.log("Email Could not be sent"); //next (new ErrorResponse("Email could not be sent",500));
+        return next(new ErrorResponse("Email could not be sent", 500));
     }
 
     console.log(resetToken);
@@ -335,7 +335,7 @@ exports.verifyUser = asyncHandler(async(req, res, next) => {
 
         await user.save({ validateBeforeSave: false });
 
-        return console.log("Email Could not be sent"); //next (new ErrorResponse("Email could not be sent",500));
+        return next(new ErrorResponse("Email could not be sent", 500));
     }
 
     console.log(ActiveStatus);

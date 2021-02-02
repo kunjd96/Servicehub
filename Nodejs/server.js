@@ -9,6 +9,7 @@ const rateLimit = require("express-rate-limit");
 const hpp = require('hpp');
 const path = require('path');
 const cors = require('cors')
+const errorHandler = require('./middleware/error');
 
 //Load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -49,6 +50,8 @@ if (process.env.NODE_ENV === "development") {
 app.use("/api/v1/auth", user);
 app.use("/api/v1/services", services);
 app.use("/api/v1", availibility);
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 0825
 
