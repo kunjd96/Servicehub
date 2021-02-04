@@ -13,40 +13,35 @@ const availibility = require("../models/availibility");
 
 exports.register = asyncHandler(async(req, res, next) => {
     const user = await User.create(req.body);
-
     if (req.body.role == "ServiceProvider") {
         const daysdata = req.body.daysdata;
+        Date.prototype.addHours = function(h) {
+            this.setHours(this.getHours() + h);
+            return this;
+        }
+
         for (let i = 0; i < daysdata.length; i++) {
             let data = daysdata[i];
+            let allTimeSlote = [];
             data.user = user.id;
+            const starttime = new Date(daysdata[i].startTime);
+            const endtime = new Date(daysdata[i].endTime);
+            for (let timeindex = 1; endtime > starttime; timeindex++) {
+                const timeData = {};
+                timeData.startTime = new Date(starttime);
+                timeData.endTime = new Date(starttime.addHours(1));
+                timeData.indexpoint = timeindex;
+                allTimeSlote.push(timeData);
+            }
+            data.allTimeSlots = allTimeSlote;
             await availibility.create(data);
         }
     }
-
-
-
-    //get Validate Token
     const validateToken = user.getActiveStatus();
-
-
-
     await user.save({ validateBeforeSave: false });
-
-    //Create reset URL
-    //const resetUrl = req.protocol+`:/`+`/`+req.get("host")+"/api/v1/auth/validateUser/"+validateToken;
-
     const verifiedUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/validateUser/${validateToken}`;
-
-    // const message = "You are eceiving this email because you (or someone else) has requested the reset of a password. <p>Click <a href="+resetUrl+">here</a> to verifie your Account</p>";
-
-    // const html = `<p>Click <a href="${resetUrl}">here</a> to verifie your Account</p>`;
-
-    //const message = `Verified Link <p><a href="${verifiedUrl}">Click Here to Verify</a></p>`;
-    //const html = `<p>Click <a href="${verifiedUrl}">here</a> to verifie your Account</p>`;
-
     const message = `Verified Link ${verifiedUrl}`;
     const html = `<p>Click <a href="${verifiedUrl}">here</a> to verifie your Account</p>`;
-
     try {
         await sendEmail({
             email: user.email,
@@ -54,22 +49,17 @@ exports.register = asyncHandler(async(req, res, next) => {
             message,
             html
         });
-
         res.status(200).json({ success: true, data: "Email sent" });
     } catch (err) {
         console.log(err);
         user.activeUserToken = undefined;
         user.activeUserTokenExpire = undefined;
 
-        await user.remove(); //save({validateBeforeSave:false});
+        await user.remove();
 
         next(new ErrorResponse("Email could not be sent", 500));
     }
-
-
     res.status(200).json({ success: true, data: user });
-
-
 });
 
 
