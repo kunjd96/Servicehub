@@ -27,6 +27,7 @@ const limiter = rateLimit({
 const user = require("./routes/user");
 const services = require("./routes/services");
 const availibility = require("./routes/availibility");
+const appointment = require("./routes/appointment");
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -50,6 +51,8 @@ if (process.env.NODE_ENV === "development") {
 app.use("/api/v1/auth", user);
 app.use("/api/v1/services", services);
 app.use("/api/v1", availibility);
+app.use("/api/v1/appointment", appointment);
+
 
 app.use(errorHandler);
 
