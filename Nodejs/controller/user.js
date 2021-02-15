@@ -352,7 +352,7 @@ exports.getOneService = asyncHandler(async (req, res , next) => {
     let query;
 
     if(req.params.serviceID){
-        query = User.find({serviceid : req.params.serviceID})
+        query = User.find({serviceid : req.params.serviceID}).populate("availibility");
     }
     
     const user = await query;
