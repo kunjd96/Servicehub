@@ -56,6 +56,45 @@ exports.getAllAppoinment = asyncHandler(async(req, res, next) => {
 
 });
 
+exports.getBookedAppointments = asyncHandler(async(req, res, next) => {
+    const startDate = new Date(new Date(req.body.StartDate).setUTCHours(0, 0, 0, 0)).toISOString();
+    const endDate = new Date(new Date(req.body.EndDate).setUTCHours(23, 59, 59, 999)).toISOString();
+    let appointment;
+    if (req.user.role == "ServiceProvider") {
+        const serviceproviderID = req.user.id;
+        appointment = await Appointment.find({
+            serviceDate: {
+                $gte: `${startDate}`,
+                $lt: `${endDate}`
+            },
+            serviceProviderTimeAssign: true,
+            serviceProviderId: serviceproviderID,
+            serviceProviderReject: false,
+            clientRejected: false,
+            invoiceGenrated: false
+        }).populate("clientId").populate("serviceProviderId");
+    }
+    if (req.user.role == "Customer") {
+        const clientId = req.user.id;
+        appointment = await Appointment.find({
+            serviceDate: {
+                $gte: `${startDate}`,
+                $lt: `${endDate}`
+            },
+            serviceProviderTimeAssign: true,
+            clientId: clientId,
+            serviceProviderReject: false,
+            clientRejected: false,
+            invoiceGenrated: false
+        }).populate("clientId").populate("serviceProviderId");
+    }
+    return res.status(200).json({
+        count: appointment.length,
+        success: true,
+        data: appointment
+    });
+});
+
 
 
 exports.getAllAppoinmentUser = asyncHandler(async(req, res, next) => {
