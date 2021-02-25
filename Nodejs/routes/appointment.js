@@ -10,6 +10,6 @@ router.route('/addAppointment').post(protect, addAppointment);
 router.route('/getAllAppointment').get(protect, authorize('admin'), getAllAppoinment);
 router.route('/getAllAppointmentUser').get(protect, getAllAppoinmentUser);
 router.route('/updateAppointment/:id').put(protect, updateAppointment);
-router.route('/getBookedAppointments').get(protect, getBookedAppointments);
+router.route('/getBookedAppointments').post(protect, getBookedAppointments);
 
 module.exports = router;

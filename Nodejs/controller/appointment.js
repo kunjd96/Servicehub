@@ -57,8 +57,11 @@ exports.getAllAppoinment = asyncHandler(async(req, res, next) => {
 });
 
 exports.getBookedAppointments = asyncHandler(async(req, res, next) => {
-    const startDate = new Date(new Date(req.body.StartDate).setUTCHours(0, 0, 0, 0)).toISOString();
-    const endDate = new Date(new Date(req.body.EndDate).setUTCHours(23, 59, 59, 999)).toISOString();
+    let startDate = new Date(new Date(req.body.StartDate).setUTCHours(0, 0, 0, 0)).toISOString();
+    let endDate = new Date(new Date(req.body.EndDate).setUTCHours(23, 59, 59, 999)).toISOString();
+
+    console.log(startDate);
+    console.log(endDate);
     let appointment;
     if (req.user.role == "ServiceProvider") {
         const serviceproviderID = req.user.id;
