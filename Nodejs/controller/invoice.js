@@ -23,9 +23,8 @@ exports.AddInvoice = asyncHandler(async(req, res, next) => {
         data.InvoiceId = invoice.id;
         await Charges.create(data);
     }
-    appointment = await Appointment.findOneAndUpdate(req.body.appointment, {
-        invoiceGenrated: true
-    }, {
+    var newvalues = { $set: { invoiceGenrated: true } };
+    appointment = await Appointment.findOneAndUpdate(req.body.appointment, newvalues, {
         new: true,
         runValidators: true
     });
