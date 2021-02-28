@@ -104,11 +104,13 @@ exports.getAllAppoinmentUser = asyncHandler(async(req, res, next) => {
     let appointment = [];
     if (req.user.role == "Customer") {
         appointment = await Appointment.find({
-            clientId: req.user.id
+            clientId: req.user.id,
+            invoiceGenrated: false
         }).populate("clientId").populate("serviceProviderId");
     } else {
         appointment = await Appointment.find({
-            serviceProviderId: req.user.id
+            serviceProviderId: req.user.id,
+            invoiceGenrated: false
         }).populate("clientId").populate("serviceProviderId");
     }
 
