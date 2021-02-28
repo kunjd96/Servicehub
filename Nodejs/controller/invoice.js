@@ -9,13 +9,7 @@ const Appointment = require("../models/appointment");
 // access           Private
 
 exports.AddInvoice = asyncHandler(async(req, res, next) => {
-    let appointment = await Appointment.findById(req.body.appointment);
 
-    if (!appointment) {
-        return next(
-            new ErrorResponse(`appointment not found with id of ${req.body.appointment}`, 404)
-        );
-    }
     const invoice = await Invoice.create(req.body);
     const chargesDesc = req.body.ChargesDescription;
     for (let i = 0; i < chargesDesc.length; i++) {
@@ -23,11 +17,9 @@ exports.AddInvoice = asyncHandler(async(req, res, next) => {
         data.InvoiceId = invoice.id;
         await Charges.create(data);
     }
-    var newvalues = { $set: { invoiceGenrated: true } };
-    appointment = await Appointment.findOneAndUpdate(req.body.appointment, newvalues, {
-        new: true,
-        runValidators: true
-    });
+
+    await Appointment.findByIdAndUpdate(req.body.appointment, { invoiceGenrated: true });
+
 
     res.status(200).json({ success: true, insertdata: invoice });
 
