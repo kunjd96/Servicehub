@@ -45,7 +45,7 @@ exports.getAllInvoiceByUser = asyncHandler(async(req, res, next) => {
     } else {
         invoiceList = await Invoice.find({
             ServiceProviderId: req.user.id
-        }).populate("CustomerID").populate("ServiceProviderId").populate("appointment");
+        }).populate("CustomerID").populate("ServiceProviderId").populate("appointment").populate("charges");
     }
 
     return res.status(200).json({
