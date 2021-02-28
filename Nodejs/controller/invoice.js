@@ -2,12 +2,20 @@ const asyncHandler = require("../middleware/async");
 const Invoice = require("../models/invoice");
 const ErrorResponse = require("../utils/errorResponse");
 const Charges = require("../models/ChargesDescription");
+const Appointment = require("../models/appointment");
 
 // @desc            Add Invoice
 // @routes          POST /api/v1/Invoice/AddInvoice
 // access           Private
 
 exports.AddInvoice = asyncHandler(async(req, res, next) => {
+    let appointment = await Appointment.findById(req.body.appointment);
+
+    if (!appointment) {
+        return next(
+            new ErrorResponse(`appointment not found with id of ${req.body.appointment}`, 404)
+        );
+    }
     const invoice = await Invoice.create(req.body);
     const chargesDesc = req.body.ChargesDescription;
     for (let i = 0; i < chargesDesc.length; i++) {
@@ -15,6 +23,13 @@ exports.AddInvoice = asyncHandler(async(req, res, next) => {
         data.InvoiceId = invoice.id;
         await Charges.create(data);
     }
+    appointment = await Appointment.findOneAndUpdate(req.body.appointment, {
+        invoiceGenrated: true
+    }, {
+        new: true,
+        runValidators: true
+    });
+
     res.status(200).json({ success: true, insertdata: invoice });
 
 });
