@@ -120,6 +120,30 @@ exports.registerUser = asyncHandler(async(req, res, next) => {
 });
 
 
+
+exports.changePassword = asyncHandler(async(req, res, next) => {
+
+    const user = await User.findOne({
+        email: req.user.email
+    });
+    console.log(user);
+
+    if (!user) {
+        return next(new ErrorResponse("User not found with id of ", 404));
+    }
+
+    //Set Password
+    user.password = req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpired = undefined;
+    await user.save();
+    const token = user.getSignedJwtToken();
+    res.status(200).json({ success: true, token });
+
+
+});
+
+
 ///
 
 
@@ -209,18 +233,15 @@ exports.getMe = asyncHandler(async(req, res, next) => {
 // access           Public
 
 exports.resetPassowrd = asyncHandler(async(req, res, next) => {
-
+    console.log("sdadasdsadsad");
     //Get Hashed Token
-    const ResetPasswordToken = crypto.createHash("sha256").update(req.params.resettoken).digest("hex");
-
-
     const user = await User.findOne({
-        ResetPasswordToken,
-        resetPasswordExpired: { $gt: Date.now() }
+        email: req.user.email
     });
+    console.log(user);
 
     if (!user) {
-        return console.log("Invalida Token"); //next(new E)
+        return next(new ErrorResponse("User not found with id of ", 404));
     }
 
     //Set Password
@@ -228,11 +249,8 @@ exports.resetPassowrd = asyncHandler(async(req, res, next) => {
     user.resetPasswordToken = undefined;
     user.resetPasswordExpired = undefined;
     await user.save();
-
-
     const token = user.getSignedJwtToken();
     res.status(200).json({ success: true, token });
-    ``
 });
 
 
