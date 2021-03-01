@@ -26,7 +26,11 @@ const RateSchema = new mongoose.Schema({
     appointment: {
         type: mongoose.Schema.ObjectId,
         ref: "Appointment"
-    }
+    },
+    ratingDate: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 // Static method to get avg rating and save
