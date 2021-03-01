@@ -29,6 +29,7 @@ const services = require("./routes/services");
 const availibility = require("./routes/availibility");
 const appointment = require("./routes/appointment");
 const invoice = require("./routes/invoice");
+const rating = require("./routes/ratingandcomment");
 
 
 const app = express();
@@ -55,6 +56,7 @@ app.use("/api/v1/services", services);
 app.use("/api/v1", availibility);
 app.use("/api/v1/appointment", appointment);
 app.use("/api/v1/Invoice", invoice);
+app.use("/api/v1/rating", rating);
 
 
 app.use(errorHandler);
