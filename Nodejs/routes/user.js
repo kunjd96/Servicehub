@@ -13,7 +13,8 @@ const {
     verifyUser,
     getOneService,
     checkCode,
-    changePassword
+    changePassword,
+    changePasswordnew
 } = require("../controller/user");
 
 const router = express.Router();
@@ -24,6 +25,7 @@ router.route('/register').post(register);
 
 router.route('/login').post(login);
 router.route('/changePassword').put(protect, changePassword);
+router.route('/changePasswordNew').put(changePasswordnew);
 router.route('/ForgotPass').post(ForgotPass);
 router.route('/checkCode').post(checkCode);
 

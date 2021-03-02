@@ -143,6 +143,28 @@ exports.changePassword = asyncHandler(async(req, res, next) => {
 
 });
 
+exports.changePasswordnew = asyncHandler(async(req, res, next) => {
+
+    const user = await User.findOne({
+        email: req.body.email
+    });
+    console.log(user);
+
+    if (!user) {
+        return next(new ErrorResponse("User not found with id of ", 404));
+    }
+
+    //Set Password
+    user.password = req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpired = undefined;
+    await user.save();
+    const token = user.getSignedJwtToken();
+    res.status(200).json({ success: true, token });
+
+
+});
+
 
 ///
 
