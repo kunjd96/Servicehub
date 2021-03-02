@@ -299,13 +299,16 @@ exports.ForgotPass = asyncHandler(async(req, res, next) => {
 });
 
 exports.checkCode = asyncHandler(async(req, res, next) => {
-    const user = await User.findOne({
+    let user = await User.findOne({
         email: req.body.email,
         ResetPasswordToken: req.body.code
     });
     if (!user) {
         return next(new ErrorResponse("There is no user with this email address", 200));
     } else {
+        user.ResetPasswordToken = undefined;
+        user.resetPasswordExpired = undefined;
+        await user.save();
         res.status(200)
             .json({
                 success: true,
