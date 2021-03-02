@@ -153,6 +153,19 @@ UserSchema.methods.getResetPasswordToken = function() {
     return resetToken;
 };
 
+UserSchema.methods.get6digitCode = function() {
+    //Generate Token
+    const code = Math.floor(Math.random() * 899999 + 100000)
+
+    //Hash token and set to resetPasswordToken field
+    this.ResetPasswordToken = code;
+
+    //set expired
+    this.resetPasswordExpired = Date.now() + 10 * 60 * 1000;
+
+    return code;
+};
+
 
 //Generate and hash Verify email Address token
 UserSchema.methods.getActiveStatus = function() {

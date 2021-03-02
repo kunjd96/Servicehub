@@ -233,24 +233,85 @@ exports.getMe = asyncHandler(async(req, res, next) => {
 // access           Public
 
 exports.resetPassowrd = asyncHandler(async(req, res, next) => {
-    console.log("sdadasdsadsad");
-    //Get Hashed Token
-    const user = await User.findOne({
-        email: req.user.email
-    });
-    console.log(user);
+    console.log("heree");
+    // const user = await User.findOne({ email: req.body.email });
+
+    // if (!user) {
+    //     return next(new ErrorResponse("There is no user with this email address", 404));
+    // }
+    // const code = user.get6digitCode();
+
+    // await user.save({ validateBeforeSave: false });
+
+    // const message = `Your Reset Password Code`;
+    // const html2 = `Your reset Code is  "${code}" use this code to reset your password`;
+
+    // try {
+    //     await sendEmail({
+    //         email: user.email,
+    //         subject: 'Verified Code',
+    //         message,
+    //         html2
+    //     });
+    //     res.status(200)
+    //         .json({
+    //             success: true,
+    //             data: 'Email Sent'
+    //         });
+    // } catch (error) {
+    //     console.log(error);
+    //     user.remove();
+    //     return next(new ErrorResponse('Eamil Not Sent', 500));
+    // }
+});
+
+
+exports.ForgotPass = asyncHandler(async(req, res, next) => {
+    const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-        return next(new ErrorResponse("User not found with id of ", 404));
+        return next(new ErrorResponse("There is no user with this email address", 404));
     }
+    const code = user.get6digitCode();
 
-    //Set Password
-    user.password = req.body.password;
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpired = undefined;
-    await user.save();
-    const token = user.getSignedJwtToken();
-    res.status(200).json({ success: true, token });
+    await user.save({ validateBeforeSave: false });
+
+    const message = `Your Reset Password Code`;
+    const html = `<p>Your reset Code is  "${code}" use this code to reset your password<p>`;
+
+    try {
+        await sendEmail({
+            email: user.email,
+            subject: 'Verified Code',
+            message,
+            html
+        });
+        res.status(200)
+            .json({
+                success: true,
+                data: 'Email Sent'
+            });
+    } catch (error) {
+        console.log(error);
+
+        return next(new ErrorResponse('Eamil Not Sent', 500));
+    }
+});
+
+exports.checkCode = asyncHandler(async(req, res, next) => {
+    const user = await User.findOne({
+        email: req.body.email,
+        ResetPasswordToken: req.body.code
+    });
+    if (!user) {
+        return next(new ErrorResponse("There is no user with this email address", 200));
+    } else {
+        res.status(200)
+            .json({
+                success: true,
+                data: 'User Found'
+            });
+    }
 });
 
 

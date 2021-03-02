@@ -8,9 +8,11 @@ const {
     getMe,
     forgotPassword,
     resetPassowrd,
+    ForgotPass,
     validateUser,
     verifyUser,
     getOneService,
+    checkCode,
     changePassword
 } = require("../controller/user");
 
@@ -22,7 +24,8 @@ router.route('/register').post(register);
 
 router.route('/login').post(login);
 router.route('/changePassword').put(protect, changePassword);
-
+router.route('/ForgotPass').post(ForgotPass);
+router.route('/checkCode').post(checkCode);
 
 router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);
